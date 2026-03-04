@@ -77,7 +77,10 @@
             <HintPath>$(SUPER_BATTLE_GOLF_PATH)\Super Battle Golf_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
         </Reference>
         <Reference Include="UnityEngine.AudioModule">
-            <HintPath>F:\SteamLibrary\steamapps\common\Super Battle Golf\Super Battle Golf_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
+            <HintPath>$(SUPER_BATTLE_GOLF_PATH)\Super Battle Golf_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
         </Reference>
     </ItemGroup>
+    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+        <Exec Command="xcopy /Y &quot;$(TargetDir)$(TargetName).dll&quot; &quot;$(SUPER_BATTLE_GOLF_PATH)\BepInEx\plugins\&quot;" />
+    </Target>
 </Project>
