@@ -2,7 +2,7 @@
 #### _A BepInEx5 mod to Add a Picture in Picture (PiP) camerea that tracks your golf ball_
 
 # TO-DO
-#### Fix camera selection logic so that it doesn't select random players golf balls while spectating.
+#### 
 
 ## Installation
 
