@@ -234,9 +234,10 @@ public class BallCamMod : BaseUnityPlugin
     {
         _ballCamObj = new GameObject("PiPBallCamera");
         _ballCam = _ballCamObj.AddComponent<Camera>();
+		_ballCam.tag = "No Grass";
 
-        // Rect positioning: x=0.79 (Right), y=0.22 (Raised)
-        float w = 0.20f;
+		// Rect positioning: x=0.79 (Right), y=0.22 (Raised)
+		float w = 0.20f;
         float h = 0.20f;
         float x = 0.79f; 
         float y = 0.25f; 
