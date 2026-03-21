@@ -1,0 +1,9 @@
+{
+    "name": "SBG_PiPBallCam",
+    "version_number": "1.1.5",
+    "website_url": "https://github.com/Kingcox22/SBG-PiPBallCam/",
+    "description": "Adds a Picture in Picture (PiP) camerea that tracks your golf ball",
+    "dependencies": [
+        "BepInEx-BepInExPack-5.4.2100"
+    ]
+}

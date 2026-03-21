@@ -42,25 +42,37 @@ public class BallCamMod : BaseUnityPlugin
         if (info == null) return "Unknown";
         Type t = info.GetType();
 
-        var prop = t.GetProperty("Name", BindingFlags.Public | BindingFlags.Instance);
-        if (prop != null) return prop.GetValue(info)?.ToString() ?? "Unknown";
+        // 1. Check PlayerInfo for Username/Name properties (New build standard)
+        string[] infoKeys = { "Username", "Name", "playerName" };
+        foreach (var key in infoKeys)
+        {
+            var prop = t.GetProperty(key, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+            if (prop != null) return prop.GetValue(info)?.ToString() ?? "Unknown";
 
-        var field = t.GetField("playerName", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-        if (field != null) return field.GetValue(info)?.ToString() ?? "Unknown";
+            var field = t.GetField(key, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+            if (field != null) return field.GetValue(info)?.ToString() ?? "Unknown";
+        }
 
+        // 2. Check PlayerId Component (Matches your snippet: public string PlayerName)
         Component idComp = info.GetComponent("PlayerId");
         if (idComp != null)
         {
             Type idType = idComp.GetType();
-            string[] names = { "_playerName", "networkedPlayerName", "playerName" };
-            foreach (var n in names)
+            // Added "PlayerName" (from your snippet) and "Username" to the search list
+            string[] idNames = { "PlayerName", "Username", "_playerName", "networkedPlayerName", "playerName" };
+            
+            foreach (var n in idNames)
             {
+                // Try Property first (matches the snippet getter)
+                var p = idType.GetProperty(n, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                if (p != null) return p.GetValue(idComp)?.ToString() ?? "Unknown";
+
+                // Try Field fallback
                 var f = idType.GetField(n, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
                 if (f != null) return f.GetValue(idComp)?.ToString() ?? "Unknown";
-                var p = idType.GetProperty(n, BindingFlags.Public | BindingFlags.Instance);
-                if (p != null) return p.GetValue(idComp)?.ToString() ?? "Unknown";
             }
         }
+
         return "Golfer";
     }
 
