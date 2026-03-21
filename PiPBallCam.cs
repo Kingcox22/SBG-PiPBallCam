@@ -5,7 +5,7 @@ using System.Linq;
 using System;
 using System.Reflection;
 
-[BepInPlugin("com.kingcox.sbg.pipballcam", "SBG PiP Ball Cam", "1.1.4")]
+[BepInPlugin("com.kingcox.sbg.pipballcam", "SBG PiP Ball Cam", "1.1.6")]
 public class BallCamMod : BaseUnityPlugin
 {
     private Camera _ballCam;

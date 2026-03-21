@@ -4,7 +4,7 @@
         <TargetFramework>netstandard2.1</TargetFramework>
         <AssemblyName>SBG-PiPBallCam</AssemblyName>
         <Product>Picture-in-Picture Ball Camera</Product>
-        <Version>1.1.4</Version>
+        <Version>1.1.6</Version>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <LangVersion>latest</LangVersion>
         <RestoreAdditionalProjectSources>

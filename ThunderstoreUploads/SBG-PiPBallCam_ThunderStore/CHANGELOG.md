@@ -1,3 +1,5 @@
+## 1.1.6
+* Future Proofing (No Visible Changes)
 ## 1.1.5
 * Added Picture in Picture functionality while spectating.
 ## 1.1.2
